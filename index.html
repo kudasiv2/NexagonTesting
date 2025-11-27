@@ -397,9 +397,12 @@
         /* Dashboard Stats Cards */
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 24px;
             margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .dashboard-card {
@@ -721,7 +724,7 @@
             nav ul { display: none; }
             .hamburger-menu { display: flex; }
             .levels-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
-            .dashboard-grid { grid-template-columns: 1fr; }
+            .dashboard-grid { grid-template-columns: 1fr; max-width: 300px; }
         }
 
         @media (max-width: 480px) {
@@ -833,26 +836,6 @@
                     <h3 id="userPending">0 USDT</h3>
                     <p>Pending Rewards</p>
                 </div>
-                <div class="dashboard-card">
-                    <h3 id="userWithdrawn">0 USDT</h3>
-                    <p>Total Payout</p>
-                </div>
-                <div class="dashboard-card">
-                    <h3 id="referralBonus">0 USDT</h3>
-                    <p>Referral Earnings</p>
-                </div>
-                <div class="dashboard-card">
-                    <h3 id="referralLevel">0</h3>
-                    <p>Current Level</p>
-                </div>
-                <div class="dashboard-card">
-                    <h3 id="leadershipBonus">0 USDT</h3>
-                    <p>Leadership Earnings</p>
-                </div>
-                <div class="dashboard-card">
-                    <h3 id="teamSize">0</h3>
-                    <p>Team Size</p>
-                </div>
             </div>
             
             <div style="text-align: center;">
@@ -937,11 +920,11 @@
                 <div class="stats-row">
                     <div class="stat-box">
                         <p>Referral Earnings</p>
-                        <h3 id="referralBonus2">0 USDT</h3>
+                        <h3 id="referralBonus">0 USDT</h3>
                     </div>
                     <div class="stat-box">
                         <p>Current Level</p>
-                        <h3 id="referralLevel2">0</h3>
+                        <h3 id="referralLevel">0</h3>
                     </div>
                 </div>
 
@@ -956,7 +939,7 @@
                 <div class="referral-link-container">
                     <p style="color: var(--text-muted);">Share your referral link and earn commissions:</p>
                     <div class="referral-link-box">
-                        <div class="referral-link" id="referralLinkText">https://nexagon.com/ref/your-address</div>
+                        <div class="referral-link" id="referralLinkText">Connect wallet to generate referral link</div>
                         <button class="btn-copy" id="copyReferralBtn">
                             <i class="fas fa-copy"></i> Copy
                         </button>
@@ -983,11 +966,11 @@
                 <div class="stats-row">
                     <div class="stat-box">
                         <p>Leadership Earnings</p>
-                        <h3 id="leadershipBonus2">0 USDT</h3>
+                        <h3 id="leadershipBonus">0 USDT</h3>
                     </div>
                     <div class="stat-box">
                         <p>Team Size</p>
-                        <h3 id="teamSize2">0</h3>
+                        <h3 id="teamSize">0</h3>
                     </div>
                 </div>
 
@@ -1032,15 +1015,6 @@
         <div class="modal-content">
             <button class="close-modal" id="closeInvestModal">&times;</button>
             <h2 style="margin-bottom: 30px;">Confirm Investment</h2>
-            
-            <div class="form-group">
-                <label class="form-label">Plan Selected</label>
-                <select class="form-input" id="planSelect" disabled>
-                    <option value="0">Gold Plan</option>
-                    <option value="1">Platinum Plan</option>
-                    <option value="2">Diamond Plan</option>
-                </select>
-            </div>
             
             <div class="form-group">
                 <label class="form-label">Amount (USDT)</label>
@@ -1089,6 +1063,7 @@
         let userAccount;
         let currentMaxDeposit = 0; // Untuk validasi
         let currentUserTotalInvested = 0; // Untuk locking logic
+        let currentPlanId = 0; // Untuk menyimpan plan yang dipilih
 
         // --- Notification System (Toast) ---
         function showToast(message, type = 'success') {
@@ -1172,7 +1147,8 @@
                 };
 
                 // Update referral link
-                document.getElementById('referralLinkText').textContent = `https://nexagon.com/ref/${userAccount}`;
+                const currentUrl = window.location.href.split('?')[0]; // Get current URL without query params
+                document.getElementById('referralLinkText').textContent = `${currentUrl}?ref=${userAccount}`;
             } else {
                 heroConnectBtn.style.display = 'inline-flex';
                 heroConnectedButtons.style.display = 'none';
@@ -1196,16 +1172,13 @@
                 currentUserTotalInvested = parseInt(userInfo.totalInvested) / 1e18;
 
                 document.getElementById('userInvested').textContent = currentUserTotalInvested.toFixed(2) + ' USDT';
-                document.getElementById('userWithdrawn').textContent = (userInfo.totalWithdrawn / 1e18).toFixed(2) + ' USDT';
                 document.getElementById('userPending').textContent = (await contract.methods.getPendingRewards(userAccount).call() / 1e18).toFixed(2) + ' USDT';
                 
                 // Referral stats
                 document.getElementById('referralBonus').textContent = (userInfo.referralBonus / 1e18).toFixed(2) + ' USDT';
-                document.getElementById('referralBonus2').textContent = (userInfo.referralBonus / 1e18).toFixed(2) + ' USDT';
                 
                 // Leadership stats
                 document.getElementById('leadershipBonus').textContent = (userInfo.leadershipBonus / 1e18).toFixed(2) + ' USDT';
-                document.getElementById('leadershipBonus2').textContent = (userInfo.leadershipBonus / 1e18).toFixed(2) + ' USDT';
 
                 // 3. Render Levels based on investment
                 renderReferralCards(currentUserTotalInvested);
@@ -1213,7 +1186,6 @@
                 // 4. Leadership based on team
                 const teamCount = await contract.methods.getTeamMembersCount(userAccount).call();
                 document.getElementById('teamSize').textContent = teamCount;
-                document.getElementById('teamSize2').textContent = teamCount;
                 renderLeadershipCards(teamCount);
 
             } catch (e) {
@@ -1247,7 +1219,6 @@
                 else break;
             }
             document.getElementById('referralLevel').textContent = currentLvl;
-            document.getElementById('referralLevel2').textContent = currentLvl;
         }
 
         function renderLeadershipCards(teamCount) {
@@ -1284,10 +1255,9 @@
                     showToast("Please Connect Wallet first!", "error");
                     return;
                 }
-                const planId = e.target.getAttribute('data-plan');
+                currentPlanId = e.target.getAttribute('data-plan');
                 currentMaxDeposit = parseFloat(e.target.getAttribute('data-max'));
                 
-                document.getElementById('planSelect').value = planId;
                 document.getElementById('investAmount').value = '';
                 
                 modal.style.display = 'flex';
@@ -1301,6 +1271,11 @@
         // Copy Referral Link
         document.getElementById('copyReferralBtn').addEventListener('click', () => {
             const referralLink = document.getElementById('referralLinkText').textContent;
+            if (referralLink === "Connect wallet to generate referral link") {
+                showToast("Please connect wallet first!", "error");
+                return;
+            }
+            
             navigator.clipboard.writeText(referralLink).then(() => {
                 showToast("Referral link copied to clipboard!");
             }).catch(err => {
@@ -1311,7 +1286,6 @@
 
         // Invest Action with Validation
         document.getElementById('confirmInvest').addEventListener('click', async () => {
-            const planId = document.getElementById('planSelect').value;
             const amount = document.getElementById('investAmount').value;
             const referrer = document.getElementById('referralInput').value || '0x0000000000000000000000000000000000000000';
 
@@ -1328,7 +1302,7 @@
 
             try {
                 const amountWei = web3.utils.toWei(amount, 'ether');
-                await contract.methods.invest(planId, amountWei, referrer).send({ from: userAccount });
+                await contract.methods.invest(currentPlanId, amountWei, referrer).send({ from: userAccount });
                 
                 showToast("Investment Successful! Welcome to Nexagon.");
                 modal.style.display = 'none';
