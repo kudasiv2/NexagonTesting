@@ -1741,7 +1741,7 @@
                         – Next Generation Investment Protocol
                     </h1>
                     <p class="hero__description">
-                        Experience premium decentralized finance with Nexagon's advanced investment protocol. Earn stable daily returns through our optimized ROI system, backed by a 15-level referral program and secure smart contract technology.
+                        Experience premium decentralized finance with Nexagon's advanced investment protocol. Earn stable daily returns through our optimized ROI system, backed by a 15-level referral program and secure smart contract technology
                     </p>
                     <div class="hero__buttons">
                         <button class="btn btn--primary" data-section="invest">
@@ -2021,7 +2021,7 @@
                     <h3>How Referral Program Works</h3>
                     <div class="info-box">
                         <p>
-                            The Referral Program rewards you for bringing new investors to the platform. With 15 levels of referral commissions, you can earn from your direct referrals and their extended network.
+                            The Referral Program rewards you for bringing new investors to the platform. With 15 levels of referral commissions, you can earn from your direct referrals and their extended network!
                         </p>
                         <ul>
                             <li>Each level requires a minimum investment amount to unlock</li>
@@ -2092,7 +2092,7 @@
                     <h3>How Leadership Program Works</h3>
                     <div class="info-box">
                         <p>
-                            The Leadership Program rewards you for building and maintaining an active team. As your team grows and remains active, you unlock higher leadership levels with increased bonus rates.
+                            The Leadership Program rewards you for building and maintaining an active team. As your team grows and remains active, you unlock higher leadership levels with increased bonus rates!
                         </p>
                         <ul>
                             <li>Each level requires a minimum number of active team members</li>
@@ -2218,7 +2218,7 @@
                         <span>Nexagon</span>
                     </div>
                     <p class="footer__description">
-                        Experience premium decentralized finance with Nexagon's advanced investment protocol. Earn stable daily returns through our optimized ROI system, backed by a 15-level referral program and secure smart contract technology.
+                        Experience premium decentralized finance with Nexagon's advanced investment protocol. Earn stable daily returns through our optimized ROI system, backed by a 15-level referral program and secure smart contract technology
                     </p>
                     <div class="footer__social">
                         <a href="#" class="social__link">
@@ -2234,7 +2234,7 @@
                 </div>
             </div>
             <div class="footer__bottom">
-                <p>&copy; 2025 Nexagon. All rights reserved.</p>
+                <p>&copy; 2025 Nexagon</p>
             </div>
         </div>
     </footer>
@@ -2575,9 +2575,9 @@
             const plansContainer = document.getElementById('investmentPlans');
             if (!plansContainer) return;
             const plans = [
-                {id: 0, name: 'Gold Plan', roi: '1.6% Daily', range: '10 - 100 USDT', duration: '7 Days', total: '112% Total ROI', features: ['1.6% Daily ROI', '7 Days Duration', '112% Total Returns', '15-Level Referral'], featured: false},
-                {id: 1, name: 'Platinum Plan', roi: '0.9% Daily', range: '50 - 100 USDT', duration: '14 Days', total: '126% Total ROI', features: ['0.9% Daily ROI', '14 Days Duration', '126% Total Returns', '15-Level Referral'], featured: true},
-                {id: 2, name: 'Diamond Plan', roi: '0.5% Daily', range: '100+ USDT', duration: '30 Days', total: '150% Total ROI', features: ['0.5% Daily ROI', '30 Days Duration', '150% Total Returns', '15-Level Referral'], featured: false}
+                {id: 0, name: 'Gold Plan', roi: '16% Daily', range: '10 - 100 USDT', duration: '7 Days', total: '112% Total ROI', features: ['16% Daily ROI', '7 Days Duration', '112% Total Returns', '15-Level Referral'], featured: false},
+                {id: 1, name: 'Platinum Plan', roi: '9% Daily', range: '50 - 100 USDT', duration: '14 Days', total: '126% Total ROI', features: ['9% Daily ROI', '14 Days Duration', '126% Total Returns', '15-Level Referral'], featured: true},
+                {id: 2, name: 'Diamond Plan', roi: '5% Daily', range: '100+ USDT', duration: '30 Days', total: '150% Total ROI', features: ['5% Daily ROI', '30 Days Duration', '150% Total Returns', '15-Level Referral'], featured: false}
             ];
             plansContainer.innerHTML = plans.map(plan => `
                 <div class="plan-card ${plan.featured ? 'featured' : ''}" data-plan-id="${plan.id}">
@@ -2599,9 +2599,9 @@
         function selectPlan(planId) {
             if (!userAccount) return showNotification('Please connect your wallet first!', 'error');
             const plansData = [
-                { id: 0, name: 'Gold Plan', roi: '1.6% Daily', min: 10, max: 100 },
-                { id: 1, name: 'Platinum Plan', roi: '0.9% Daily', min: 50, max: 100 },
-                { id: 2, name: 'Diamond Plan', roi: '0.5% Daily', min: 100, max: Infinity }
+                { id: 0, name: 'Gold Plan', roi: '16% Daily', min: 10, max: 100 },
+                { id: 1, name: 'Platinum Plan', roi: '9% Daily', min: 50, max: 100 },
+                { id: 2, name: 'Diamond Plan', roi: '5% Daily', min: 100, max: Infinity }
             ];
             selectedPlan = plansData.find(p => p.id === planId);
             if (selectedPlan) showInvestmentForm();
