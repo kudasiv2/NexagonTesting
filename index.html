@@ -281,90 +281,6 @@
         .stat-value { font-size: 1.75rem; font-weight: 700; margin-bottom: 4px; color: white; }
         .stat-label { color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.5px; text-transform: uppercase; }
 
-        /* Investment History Section */
-        .investment-history-container {
-            padding: 30px;
-            margin-top: 30px;
-            display: none;
-        }
-        
-        .investment-history-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .investment-history-list {
-            max-height: 500px;
-            overflow-y: auto;
-        }
-        
-        .investment-history-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr 1fr;
-            align-items: center;
-            padding: 20px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: all 0.3s ease;
-            gap: 15px;
-        }
-        
-        .investment-history-item:hover {
-            background: rgba(139, 92, 246, 0.1);
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-2px);
-        }
-        
-        .investment-plan {
-            font-weight: 600;
-            color: white;
-        }
-        
-        .investment-amount {
-            font-weight: 700;
-            color: var(--primary-accent);
-        }
-        
-        .investment-earned {
-            font-weight: 600;
-            color: #4ade80;
-        }
-        
-        .investment-status {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .status-active {
-            background: rgba(34, 197, 94, 0.15);
-            color: #4ade80;
-            border: 1px solid rgba(34, 197, 94, 0.3);
-        }
-        
-        .status-completed {
-            background: rgba(59, 130, 246, 0.15);
-            color: #60a5fa;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        
-        .status-expired {
-            background: rgba(107, 114, 128, 0.15);
-            color: #9ca3af;
-            border: 1px solid rgba(107, 114, 128, 0.3);
-        }
-
         /* Investment Plans */
         .investment-plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
         
@@ -430,31 +346,25 @@
         .alert {
             padding: 20px; border-radius: 16px; display: flex; align-items: center; gap: 16px;
             max-width: 800px; margin: 0 auto 30px; font-size: 0.95rem;
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: var(--glass-border);
-            box-shadow: var(--shadow-card);
-            transition: all 0.3s ease;
+            background: rgba(15, 23, 42, 0.9); 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
         .alert-warning { 
             background: rgba(245, 158, 11, 0.1); 
             border-color: rgba(245, 158, 11, 0.3); 
             color: #fbbf24; 
         }
-        .alert-success { 
-            background: rgba(34, 197, 94, 0.1); 
-            border-color: rgba(34, 197, 94, 0.3); 
-            color: #4ade80; 
-        }
         .alert-info { 
             background: rgba(59, 130, 246, 0.1); 
             border-color: rgba(59, 130, 246, 0.3); 
             color: #60a5fa; 
         }
-        .alert-error { 
-            background: rgba(239, 68, 68, 0.1); 
-            border-color: rgba(239, 68, 68, 0.3); 
-            color: #f87171; 
+        .alert-success { 
+            background: rgba(34, 197, 94, 0.1); 
+            border-color: rgba(34, 197, 94, 0.3); 
+            color: #4ade80; 
         }
         
         .empty-state { text-align: center; padding: 60px 20px; }
@@ -516,6 +426,87 @@
             font-size: 0.9rem;
         }
 
+        /* Investment History */
+        .investment-history-container {
+            padding: 30px;
+            margin-top: 30px;
+        }
+        
+        .investment-history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .investment-history-list {
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        
+        .investment-history-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .investment-history-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .investment-plan {
+            font-weight: 600;
+            color: white;
+        }
+        
+        .investment-duration {
+            color: var(--text-muted);
+        }
+        
+        .investment-amount {
+            font-weight: 600;
+            color: #d8b4fe;
+        }
+        
+        .investment-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .status-active {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+        
+        .status-completed {
+            background: rgba(59, 130, 246, 0.1);
+            color: #60a5fa;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
         /* Popups & Notifications */
         .investment-success-popup {
             position: fixed; inset: 0; background: rgba(0,0,0,0.8);
@@ -544,20 +535,16 @@
         }
         .notification.show { transform: translateX(0); }
         .notification.success { 
-            border-left: 4px solid #4ade80;
-            background: rgba(15, 23, 42, 0.95);
+            border-left: 4px solid #4ade80; 
+            background: rgba(34, 197, 94, 0.1);
         }
         .notification.error { 
-            border-left: 4px solid #ef4444;
-            background: rgba(15, 23, 42, 0.95);
+            border-left: 4px solid #ef4444; 
+            background: rgba(239, 68, 68, 0.1);
         }
         .notification.info { 
-            border-left: 4px solid #60a5fa;
-            background: rgba(15, 23, 42, 0.95);
-        }
-        .notification.warning { 
-            border-left: 4px solid #fbbf24;
-            background: rgba(15, 23, 42, 0.95);
+            border-left: 4px solid #60a5fa; 
+            background: rgba(59, 130, 246, 0.1);
         }
 
         /* Referral Levels Compact */
@@ -793,6 +780,20 @@
                     </div>
                 </div>
                 
+                <!-- My Investment History Section -->
+                <div class="investment-history-container" id="investmentHistorySection" style="display: none;">
+                    <div class="investment-history-header">
+                        <h3 style="font-size: 1.5rem;">My Investment History</h3>
+                        <div class="investment-count" style="color: var(--text-muted);">
+                            <span id="investmentCount">0</span> Investments
+                        </div>
+                    </div>
+                    
+                    <div class="investment-history-list" id="investmentHistoryList">
+                        <!-- Investment history items will be generated here -->
+                    </div>
+                </div>
+                
                 <div class="empty-state" id="noInvestmentsMessage" style="display: none;">
                     <div class="empty-icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>No Active Investments</h3>
@@ -800,27 +801,6 @@
                     <button class="btn btn--primary" data-section="invest">
                         <i class="fas fa-rocket"></i> Start Investing
                     </button>
-                </div>
-
-                <!-- My Investment History Section -->
-                <div class="investment-history-container" id="investmentHistoryContainer">
-                    <div class="investment-history-header">
-                        <h3 style="margin: 0;">My Investment History</h3>
-                        <div class="investment-summary">
-                            <span style="color: var(--text-muted);">Total Investments: </span>
-                            <span id="totalInvestmentsCount" style="font-weight: 600; color: white;">0</span>
-                        </div>
-                    </div>
-                    
-                    <div class="investment-history-list" id="investmentHistoryList">
-                        <!-- Investment history items will be populated here -->
-                    </div>
-                    
-                    <div class="empty-state" id="noInvestmentHistory" style="display: none; padding: 40px 20px;">
-                        <div class="empty-icon"><i class="fas fa-history"></i></div>
-                        <h3>No Investment History</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 20px;">Your investment history will appear here once you make your first investment</p>
-                    </div>
                 </div>
             </div>
         </section>
@@ -937,7 +917,7 @@
                         <input type="text" id="referralLink" class="link-input" readonly style="flex: 1;">
                     </div>
                     <!-- Button copy dipindahkan ke bawah link dan di tengah -->
-                    <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+                    <div style="display: fit-content; justify-content: center; margin-bottom: 20px;">
                         <button class="btn btn--primary" id="copyLink" style="padding: 12px 28px; font-size: 0.95rem;">
                             <i class="fas fa-copy"></i> Copy
                         </button>
@@ -1273,10 +1253,10 @@
                     userAccount = accounts[0];
                     updateWalletUI();
                     loadUserData();
-                    showNotification('Wallet connected successfully!', 'success');
+                    showNotification('Wallet connected!', 'success');
                 }
             } catch (error) {
-                showNotification('Wallet connection failed. Please try again.', 'error');
+                showNotification('Connection failed', 'error');
             }
         }
 
@@ -1350,7 +1330,7 @@
 
         function showWalletAlerts() {
             ['dashboardWalletAlert', 'investWalletAlert', 'referralWalletAlert', 'leadershipWalletAlert'].forEach(id => document.getElementById(id).style.display = 'flex');
-            ['quickStats', 'actionButtons', 'noInvestmentsMessage', 'referralStats', 'referralLinkSection', 'referralActionButtons', 'leadershipStats', 'leadershipActionButtons', 'investmentHistoryContainer'].forEach(id => {
+            ['quickStats', 'actionButtons', 'noInvestmentsMessage', 'referralStats', 'referralLinkSection', 'referralActionButtons', 'leadershipStats', 'leadershipActionButtons', 'investmentHistorySection'].forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
@@ -1366,7 +1346,6 @@
             document.getElementById('referralActionButtons').style.display = 'flex';
             document.getElementById('leadershipActionButtons').style.display = 'flex';
             document.getElementById('referralLinkSection').style.display = 'block';
-            document.getElementById('investmentHistoryContainer').style.display = 'block';
         }
 
         async function loadUserData() {
@@ -1402,12 +1381,17 @@
 
                 const investments = await contract.methods.getUserInvestments(userAccount).call();
                 document.getElementById('noInvestmentsMessage').style.display = investments.planIds.length === 0 ? 'block' : 'none';
+                
+                // Show investment history section if user has investments
+                if (investments.planIds.length > 0) {
+                    document.getElementById('investmentHistorySection').style.display = 'block';
+                    await loadInvestmentHistory(investments);
+                } else {
+                    document.getElementById('investmentHistorySection').style.display = 'none';
+                }
 
                 generateReferralLink();
                 document.getElementById('referralLinkSection').style.display = 'block';
-                
-                // Load investment history
-                await loadInvestmentHistory(investments);
                 
                 // Load referral counts for each level
                 await loadReferralLevelsWithCounts();
@@ -1420,68 +1404,68 @@
 
         async function loadInvestmentHistory(investments) {
             const investmentHistoryList = document.getElementById('investmentHistoryList');
-            const noInvestmentHistory = document.getElementById('noInvestmentHistory');
-            const totalInvestmentsCount = document.getElementById('totalInvestmentsCount');
+            const investmentCount = document.getElementById('investmentCount');
             
-            if (!investments || investments.planIds.length === 0) {
-                investmentHistoryList.style.display = 'none';
-                noInvestmentHistory.style.display = 'block';
-                totalInvestmentsCount.textContent = '0';
-                return;
-            }
+            if (!investmentHistoryList) return;
             
-            investmentHistoryList.style.display = 'block';
-            noInvestmentHistory.style.display = 'none';
-            totalInvestmentsCount.textContent = investments.planIds.length;
+            investmentCount.textContent = investments.planIds.length;
             
-            // Clear existing items
+            // Clear existing content
             investmentHistoryList.innerHTML = '';
             
-            const planNames = {
-                0: 'Gold Plan',
-                1: 'Platinum Plan',
-                2: 'Diamond Plan'
-            };
+            // Get plan names
+            const planNames = ['Gold Plan', 'Platinum Plan', 'Diamond Plan'];
             
+            // Format USDT function
             const formatUSDT = (weiValue) => parseFloat(web3.utils.fromWei(weiValue, 'ether')).toFixed(2);
             
+            // Generate investment history items
             for (let i = 0; i < investments.planIds.length; i++) {
                 const planId = investments.planIds[i];
                 const amount = investments.amounts[i];
+                const startTime = investments.startTimes[i];
+                const lastClaimTime = investments.lastClaimTimes[i];
                 const totalClaimed = investments.totalClaimeds[i];
                 const isActive = investments.actives[i];
-                const pendingRewards = investments.pendingRewards[i];
+                const pendingReward = investments.pendingRewards[i];
                 
-                const planName = planNames[planId] || `Plan ${planId}`;
-                const formattedAmount = formatUSDT(amount);
-                const formattedEarned = formatUSDT(totalClaimed);
+                // Calculate duration and end time
+                const planInfo = await contract.methods.getPlanInfo(planId).call();
+                const duration = parseInt(planInfo.duration);
+                const endTime = parseInt(startTime) + (duration * 24 * 60 * 60); // Convert days to seconds
+                const currentTime = Math.floor(Date.now() / 1000);
                 
-                let status = 'expired';
-                let statusClass = 'status-expired';
+                // Determine status
+                let status = 'Active';
+                let statusClass = 'status-active';
                 
-                if (isActive) {
-                    status = 'active';
-                    statusClass = 'status-active';
-                } else if (parseFloat(formattedEarned) > 0) {
-                    status = 'completed';
+                if (!isActive) {
+                    status = 'Completed';
                     statusClass = 'status-completed';
+                } else if (currentTime > endTime) {
+                    status = 'Pending Completion';
+                    statusClass = 'status-pending';
                 }
                 
+                // Create investment history item
                 const investmentItem = document.createElement('div');
                 investmentItem.className = 'investment-history-item';
                 investmentItem.innerHTML = `
                     <div class="investment-plan">
-                        <div style="font-weight: 700; color: white;">${planName}</div>
-                        <div style="font-size: 0.8rem; color: var(--text-muted);">ID: ${planId}</div>
+                        <div style="font-weight: 600;">${planNames[planId] || `Plan ${planId}`}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Started: ${new Date(parseInt(startTime) * 1000).toLocaleDateString()}</div>
+                    </div>
+                    <div class="investment-duration">
+                        <div style="font-size: 0.9rem;">Duration</div>
+                        <div style="font-weight: 600;">${duration} Days</div>
                     </div>
                     <div class="investment-amount">
-                        ${formattedAmount} USDT
+                        <div style="font-size: 0.9rem;">Amount</div>
+                        <div>${formatUSDT(amount)} USDT</div>
                     </div>
-                    <div class="investment-earned">
-                        ${formattedEarned} USDT
-                    </div>
-                    <div class="investment-status ${statusClass}">
-                        ${status.toUpperCase()}
+                    <div class="investment-status">
+                        <span class="${statusClass}">${status}</span>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Earned: ${formatUSDT(totalClaimed)} USDT</div>
                     </div>
                 `;
                 
@@ -1603,10 +1587,10 @@
         }
 
         async function confirmInvestment() {
-            if (!contract || !userAccount) return showNotification('Please connect your wallet first!', 'error');
+            if (!contract || !userAccount) return showNotification('Please connect wallet', 'error');
             if (!selectedPlan) return showNotification('Please select a plan', 'error');
             const amount = parseFloat(document.getElementById('investmentAmount').value) || 0;
-            if (amount < selectedPlan.min || (selectedPlan.max !== Infinity && amount > selectedPlan.max)) return showNotification('Invalid investment amount. Please check the plan requirements.', 'error');
+            if (amount < selectedPlan.min || (selectedPlan.max !== Infinity && amount > selectedPlan.max)) return showNotification('Invalid Amount', 'error');
             let refAddr = document.getElementById('referrerAddress').value.trim() || referralAddress || '0x0000000000000000000000000000000000000000';
             
             const confirmBtn = document.getElementById('confirmInvestment');
@@ -1620,11 +1604,11 @@
                     await usdtContract.methods.approve(CONTRACT_ADDRESS, '115792089237316195423570985008687907853269984665640564039457584007913129639935').send({ from: userAccount });
                 }
                 await contract.methods.invest(selectedPlan.id, amountWei, refAddr).send({ from: userAccount });
-                showNotification('Investment completed successfully!', 'success');
+                showNotification('Investment successful!', 'success');
                 investmentSuccessPopup.classList.add('active');
                 await loadUserData(); await loadGlobalStats();
             } catch (error) {
-                showNotification('Investment transaction failed. Please try again.', 'error');
+                showNotification('Investment failed', 'error');
             } finally {
                 confirmBtn.innerHTML = '<i class="fas fa-check-circle"></i> Confirm Investment';
                 confirmBtn.disabled = false;
@@ -1632,42 +1616,22 @@
         }
 
         async function withdrawROI() {
-            if (!contract || !userAccount) return showNotification('Please connect your wallet first!', 'error');
-            const btn = document.getElementById('withdrawROI'); btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Withdrawing...'; btn.disabled = true;
-            try { 
-                await contract.methods.withdrawROI().send({ from: userAccount }); 
-                showNotification('ROI withdrawal successful!', 'success'); 
-                loadUserData(); 
-            } catch (error) { 
-                showNotification('ROI withdrawal failed. Please try again.', 'error'); 
-            } finally { 
-                btn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI'; 
-                btn.disabled = false; 
-            }
+            if (!contract || !userAccount) return showNotification('Connect wallet', 'error');
+            const btn = document.getElementById('withdrawROI'); btn.innerHTML = 'Withdrawing...'; btn.disabled = true;
+            try { await contract.methods.withdrawROI().send({ from: userAccount }); showNotification('Success', 'success'); loadUserData(); } 
+            catch { showNotification('Failed', 'error'); } finally { btn.innerHTML = '<i class="fas fa-download"></i> Withdraw ROI'; btn.disabled = false; }
         }
         async function withdrawReferral() {
-             if (!contract || !userAccount) return showNotification('Please connect your wallet first!', 'error');
-            try { 
-                await contract.methods.withdrawReferral().send({ from: userAccount }); 
-                showNotification('Referral earnings withdrawal successful!', 'success'); 
-                loadUserData(); 
-            } catch (error) { 
-                showNotification('Referral withdrawal failed. Please try again.', 'error'); 
-            }
+             if (!contract || !userAccount) return showNotification('Connect wallet', 'error');
+            try { await contract.methods.withdrawReferral().send({ from: userAccount }); showNotification('Success', 'success'); loadUserData(); } catch { showNotification('Failed', 'error'); }
         }
         async function withdrawLeadership() {
-             if (!contract || !userAccount) return showNotification('Please connect your wallet first!', 'error');
-            try { 
-                await contract.methods.withdrawLeadership().send({ from: userAccount }); 
-                showNotification('Leadership bonus withdrawal successful!', 'success'); 
-                loadUserData(); 
-            } catch (error) { 
-                showNotification('Leadership withdrawal failed. Please try again.', 'error'); 
-            }
+             if (!contract || !userAccount) return showNotification('Connect wallet', 'error');
+            try { await contract.methods.withdrawLeadership().send({ from: userAccount }); showNotification('Success', 'success'); loadUserData(); } catch { showNotification('Failed', 'error'); }
         }
 
         function copyReferralLink() {
-            navigator.clipboard.writeText(document.getElementById('referralLink').value).then(() => showNotification('Referral link copied to clipboard!', 'success'));
+            navigator.clipboard.writeText(document.getElementById('referralLink').value).then(() => showNotification('Copied!', 'success'));
         }
 
         function generateReferralLevelsCompactWithCounts(referralCounts = Array(15).fill(0)) {
@@ -1728,25 +1692,6 @@
         function showNotification(message, type = 'info') {
             notification.textContent = message; 
             notification.className = `notification ${type} show`;
-            
-            // Add appropriate icon based on type
-            let icon = '';
-            switch(type) {
-                case 'success':
-                    icon = '<i class="fas fa-check-circle"></i>';
-                    break;
-                case 'error':
-                    icon = '<i class="fas fa-exclamation-circle"></i>';
-                    break;
-                case 'warning':
-                    icon = '<i class="fas fa-exclamation-triangle"></i>';
-                    break;
-                default:
-                    icon = '<i class="fas fa-info-circle"></i>';
-            }
-            
-            notification.innerHTML = `${icon} ${message}`;
-            
             setTimeout(() => notification.classList.remove('show'), 5000);
         }
 
